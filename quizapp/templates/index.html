@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+    <div class="container mt-5">
+        <h1>Assessment Scoring</h1>
+        <div id="question">{{ question }}</div>
+        <input type="number" id="score" min="0" class="form-control" style="width:50%;"/>
+        <button class="btn btn-primary my-2" onclick="submitScore()">Submit</button>
+        <div id="remaining-points">Remaining Points for {{ remaining_points }}: </div>
+        <div id="error-message" class="error"></div>
+    </div>
+    <script>
+        function submitScore() {
+            const score = document.getElementById('score').value;
+            fetch('', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: `score=${score}`
+            }).then(response => response.json()).then(data => {
+                if (data.error) {
+                    document.getElementById('error-message').textContent = data.error;
+                } else if (data.result) {
+                    alert("Final Scores: " + JSON.stringify(data.result));
+                    location.reload(); // Reload the page to reset
+                } else {
+                    document.getElementById('question').textContent = data.question;
+                    document.getElementById('remaining-points').textContent = "Remaining Points for " + data.remaining_points + ": ";
+                    document.getElementById('error-message').textContent = '';
+                }
+            });
+        }
+    </script>
+</body>
+{% endblock content %}
