@@ -11,3 +11,7 @@ def home(request):
 
 def about(request):
     return render(request,'score_cards/about.html')
+
+
+def role(request):
+    return render(request,'score_cards/roles.html')

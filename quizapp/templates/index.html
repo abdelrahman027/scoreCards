@@ -5,22 +5,24 @@
 </style>
 {% block content %}
 <body id="index-body">
-    <div class="container  mt-5 text" id="index-body">
-        <h1 class="py-5">Answer the Following: </h1>
-        <div id="question" style="width:50%;margin-left:auto;margin-right:auto;font-size:28px;" >{{ question }} ?</div>
-        <input type="number" id="score" min="0" class="form-control my-4"  style="width:50%;margin-left:auto;margin-right:auto;"/>
-        <button class="btn btn-primary my-2" style="width:50%;margin-left:auto;margin-right:auto;margin-top:50px;" onclick="submitScore()">Submit</button>
-        <div id="remaining-points" style="width:50%;margin-left:auto;margin-right:auto;">Remaining Points for {{ remaining_points }}: </div>
+    <div class="container mt-5 text">
+        <h1 class="py-5 text-center font-weight-bold" id="q_head">Read the Part questions Carefully Before submitting</h1>
+        
+        <!-- New Section for Question Cards -->
+        <div id="question-cards">
+            <h3 class="text-center font-weight-bold">Distribute 10 points on these Questions according to what describes you best.<h2>
+            <div class="card-container" id="card-container">
+                <!-- Cards will be injected here by JavaScript -->
+            </div>
+        </div>
+        
+        <!-- Current Question -->
+        <div id="question" class="fade-in">{{ question }} ?</div>
+        <input  max="10" type="number" id="score" min="0" class="form-control my-4"  style="width: 30%;margin-left:auto;margin-right:auto;border: 1px solid;border-radius: 10px;"/>
+        <button class="btn btn-primary my-2" onclick="submitScore()" style="width: 20%;width: 20;margin-left:auto;margin-right:auto;margin-top:50px;border-radius: 15px;background-color:#51ceef;">Submit</button>
+        <h3 id="remaining-points">Remaining Points : {{ remaining_points }} </h3>
         <div id="error-message" class="error"></div>
     </div>
-
-
-
-
-
-
-
-
 
     <script>
         function submitScore() {
@@ -37,16 +39,34 @@
                     document.getElementById('error-message').textContent = data.error;
                 } else if (data.result) {
                     console.log(data.result);
-                    localStorage.setItem("result", data.result);
+                    localStorage.setItem("result", JSON.stringify(data.result));
                     alert("Final Scores: " + JSON.stringify(data.result));
-                    //location.reload(); // Reload the page to reset    
                 } else {
                     document.getElementById('question').textContent = data.question;
+                    //document.getElementById('q_head').textContent =`Answer part ${data}`
                     document.getElementById('remaining-points').textContent = "Remaining Points for " + data.remaining_points + ": ";
                     document.getElementById('error-message').textContent = '';
+                    updateQuestionCards(data.questions_in_column);
                 }
             });
         }
+
+        function updateQuestionCards(questions) {
+            const container = document.getElementById('card-container');
+            container.innerHTML = ''; // Clear previous cards
+            questions.forEach(question => {
+                const card = document.createElement('div');
+                card.className = 'card fade-in';
+                card.innerHTML = `<div class="card-body">${question}</div>`;
+                container.appendChild(card);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initial call to set up the card section if needed
+            const questionsInColumn = {{ questions_in_column|safe }};
+            updateQuestionCards(questionsInColumn);
+        });
     </script>
 </body>
 {% endblock content %}

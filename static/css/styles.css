@@ -29,3 +29,135 @@
     justify-content: center;
     
   }
+
+
+  body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    color: black;
+}
+.container {
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 50px;
+}
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.card {
+    color: #000;
+    background: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    aspect-ratio: 1 / 1; /* Ensure square shape */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.card-body {
+    font-size: 16px;
+    font-weight: bold; /* Make the text bold */
+    text-align: center;
+}
+.error {
+    color: #dc3545;
+    font-size: 16px;
+    margin-top: 20px;
+    text-align: center;
+}
+#question {
+    font-size: 28px;
+    font-weight: bold; /* Make the text bold */
+    margin: 20px 0;
+    text-align: center;
+}
+.form-control, .btn {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.btn {
+    margin-top: 30px;
+    display: block;
+}
+#remaining-points {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold; /* Make the text bold */
+}
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Main section styling */
+main {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* Container for role cards */
+.roles-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Styling individual role cards */
+.role-card {
+    background: #f4f4f4;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 300px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+/* Header and content styling */
+.card-header {
+    background: #51ceef;
+    color: white;
+    padding: 1rem;
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.card-content {
+    padding: 1rem;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Hover effects */
+.role-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .roles-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}

@@ -44,11 +44,12 @@ def index(request):
 
                 if current_col < 7:
                     question = request.session['questions_array'][current_row][current_col]
+                    questions_in_column = [request.session['questions_array'][i][current_col] for i in range(9)]  # Get all questions in the column
                     request.session['current_row'] = current_row
                     request.session['current_col'] = current_col
                     request.session['Roles_Score'] = roles_score
                     request.session['score_array'] = score_array
-                    return JsonResponse({"question": question, "remaining_points": roles_score[current_col]})
+                    return JsonResponse({"question": question, "remaining_points": roles_score[current_col], "questions_in_column": questions_in_column})
                 else:
                     # Calculate final scores
                     final_scores = [sum(row) for row in score_array]
@@ -60,5 +61,7 @@ def index(request):
             return JsonResponse({"error": "Please enter a valid number!"}, status=400)
     else:
         question = request.session['questions_array'][request.session['current_row']][request.session['current_col']]
+        questions_in_column = [request.session['questions_array'][i][request.session['current_col']] for i in range(9)]  # Get all questions in the column
         remaining_points = request.session['Roles_Score'][request.session['current_col']]
-        return render(request, 'index.html', {'question': question, 'remaining_points': remaining_points})
+        current_col=[request.session['current_col']]
+        return render(request, 'index.html', {'question': question, 'remaining_points': remaining_points, 'questions_in_column': questions_in_column,"currentCol":current_col})

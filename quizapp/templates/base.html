@@ -8,7 +8,7 @@
   <title>BoostCards</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="" />
-  <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/superhero/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="https://bootswatch.com/5/yeti/bootstrap.min.css" />
   <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
   <style>
   </style>
@@ -19,7 +19,7 @@
     <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMZ6CP7lJj4PKMOneQdiP2rqOpntsP2UxTcQ&s" style="width:80px;"  alt="Logo Boost">
+                <img src="https://boost-abroad-bucket.s3.eu-north-1.amazonaws.com/static/boost_logo2.png" style="width:80px;"  alt="Logo Boost">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
                 aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,6 +35,9 @@
 
                     <li class="nav-item">
                         <a class="nav-link" href="{% url "about" %}">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "role" %}">Roles</a>
                     </li>
                     {% comment %} <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"

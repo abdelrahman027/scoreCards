@@ -1,0 +1,85 @@
+{% extends "score_cards/base.html" %}
+
+
+{% block content %}
+
+<body>
+    <header>
+        <h1>Beblin Assessment Roles</h1>
+    </header>
+    <main>
+        <section class="roles-container">
+            <div class="role-card" id="role1">
+                <div class="card-header">Coordinator (CO)</div>
+                <div class="card-content">The Coordinator is a mature individual who is good at delegating tasks and promoting the team’s interests. They are good at organizing and managing the team’s activities and facilitating meetings.</div>
+            </div>
+            <div class="role-card" id="role2">
+                <div class="card-header">Shaper (SH)</div>
+                <div class="card-content">The Shaper is dynamic, outgoing, and highly motivated. They challenge the team to improve and overcome obstacles. They are a driving force in the team and are keen to push the team forward.</div>
+            </div>
+
+            <div class="role-card" id="role3">
+                <div class="card-header">Plant (PL)</div>
+                <div class="card-content">The Plant is creative and innovative. They come up with original ideas and solutions to problems. They are often the source of new and imaginative approaches.</div>
+            </div>
+
+            <div class="role-card" id="role4">
+                <div class="card-header">Monitor Evaluator (ME)</div>
+                <div class="card-content">The Monitor Evaluator is analytical and objective. They provide a logical overview and evaluate the team’s ideas and proposals. They are good at spotting potential problems.</div>
+            </div>
+
+
+            <div class="role-card" id="role5">
+                <div class="card-header">Resource Investigator (RI)</div>
+                <div class="card-content">The Resource Investigator is outgoing and enthusiastic. They explore new opportunities, develop contacts, and gather information from outside the team. They are good at networking.</div>
+            </div>
+
+            <div class="role-card" id="role6">
+                <div class="card-header">Implementer (IM)</div>
+                <div class="card-content">The Implementer is practical and efficient. They turn ideas into action and make sure tasks are completed. They are good at organizing work and getting things done.</div>
+            </div>
+
+            <div class="role-card" id="role7">
+                <div class="card-header">Completer Finisher (CF)</div>
+                <div class="card-content">he Completer Finisher is detail-oriented and ensures that the team’s work is completed accurately and on time. They focus on quality control and making sure tasks are completed to a high standard.</div>
+            </div>
+
+            <div class="role-card" id="role8">
+                <div class="card-header">Teamworker (TW)</div>
+                <div class="card-content">The Teamworker is supportive and cooperative. They help build relationships within the team and resolve conflicts. They are good at facilitating teamwork and ensuring everyone works well together.</div>
+            </div>
+
+            <div class="role-card" id="role9">
+                <div class="card-header">Specialist (SP)</div>
+                <div class="card-content">The Specialist has specialized knowledge and skills in a specific area. They provide in-depth expertise and contribute technical insights and solutions.</div>
+            </div>
+            <!-- Add more roles as needed -->
+        </section>
+    </main>
+    <script>
+
+        const roles = [
+        { id: 'role-coordinator', name: 'Coordinator (CO)', description: 'The Coordinator is a mature individual who is good at delegating tasks and promoting the team’s interests. They are good at organizing and managing the team’s activities and facilitating meetings.' },
+        { id: 'role-shaper', name: 'Shaper (SH)', description: 'The Shaper is dynamic, outgoing, and highly motivated. They challenge the team to improve and overcome obstacles. They are a driving force in the team and are keen to push the team forward.' },
+        { id: 'role-plant', name: 'Plant (PL)', description: 'The Plant is creative and innovative. They come up with original ideas and solutions to problems. They are often the source of new and imaginative approaches.' },
+        { id: 'role-monitor-evaluator', name: 'Monitor Evaluator (ME)', description: 'The Monitor Evaluator is analytical and objective. They provide a logical overview and evaluate the team’s ideas and proposals. They are good at spotting potential problems.' },
+        { id: 'role-resource-investigator', name: 'Resource Investigator (RI)', description: 'The Resource Investigator is outgoing and enthusiastic. They explore new opportunities, develop contacts, and gather information from outside the team. They are good at networking.' },
+        { id: 'role-implementer', name: 'Implementer (IM)', description: 'The Implementer is practical and efficient. They turn ideas into action and make sure tasks are completed. They are good at organizing work and getting things done.' },
+        { id: 'role-completer-finisher', name: 'Completer Finisher (CF)', description: 'The Completer Finisher is detail-oriented and ensures that the team’s work is completed accurately and on time. They focus on quality control and making sure tasks are completed to a high standard.' },
+        { id: 'role-teamworker', name: 'Teamworker (TW)', description: 'The Teamworker is supportive and cooperative. They help build relationships within the team and resolve conflicts. They are good at facilitating teamwork and ensuring everyone works well together.' },
+        { id: 'role-specialist', name: 'Specialist (SP)', description: 'The Specialist has specialized knowledge and skills in a specific area. They provide in-depth expertise and contribute technical insights and solutions.' }
+    ];
+
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.role-card');
+
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            // Example of a simple alert on click
+            alert(`You clicked on ${card.querySelector('.card-header').textContent}`);
+        });
+    });
+});
+    </script>
+</body>
+{% endblock content %}
