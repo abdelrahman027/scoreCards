@@ -1,14 +1,27 @@
 {% extends "base.html" %}
+
+
+
+</style>
 {% block content %}
-<body>
-    <div class="container mt-5">
-        <h1>Assessment Scoring</h1>
-        <div id="question">{{ question }}</div>
-        <input type="number" id="score" min="0" class="form-control" style="width:50%;"/>
-        <button class="btn btn-primary my-2" onclick="submitScore()">Submit</button>
-        <div id="remaining-points">Remaining Points for {{ remaining_points }}: </div>
+<body id="index-body">
+    <div class="container  mt-5 text" id="index-body">
+        <h1 class="py-5">Answer the Following: </h1>
+        <div id="question" style="width:50%;margin-left:auto;margin-right:auto;font-size:28px;" >{{ question }} ?</div>
+        <input type="number" id="score" min="0" class="form-control my-4"  style="width:50%;margin-left:auto;margin-right:auto;"/>
+        <button class="btn btn-primary my-2" style="width:50%;margin-left:auto;margin-right:auto;margin-top:50px;" onclick="submitScore()">Submit</button>
+        <div id="remaining-points" style="width:50%;margin-left:auto;margin-right:auto;">Remaining Points for {{ remaining_points }}: </div>
         <div id="error-message" class="error"></div>
     </div>
+
+
+
+
+
+
+
+
+
     <script>
         function submitScore() {
             const score = document.getElementById('score').value;
@@ -23,8 +36,10 @@
                 if (data.error) {
                     document.getElementById('error-message').textContent = data.error;
                 } else if (data.result) {
+                    console.log(data.result);
+                    localStorage.setItem("result", data.result);
                     alert("Final Scores: " + JSON.stringify(data.result));
-                    location.reload(); // Reload the page to reset
+                    //location.reload(); // Reload the page to reset    
                 } else {
                     document.getElementById('question').textContent = data.question;
                     document.getElementById('remaining-points').textContent = "Remaining Points for " + data.remaining_points + ": ";
