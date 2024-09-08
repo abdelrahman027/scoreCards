@@ -17,7 +17,7 @@ def initialize_session(request):
         ]
         request.session['score_array'] = [[0] * 7 for _ in range(9)]
         request.session['Roles_Score'] = [10] * 9
-        request.session['Roles_List'] = ['PL', 'RI', 'CO', 'SH', 'ME', 'TW', 'IM', 'CF', 'SP']
+        request.session['Roles_List'] = ['Plant (PL)', 'Investigator (RI)', 'Coordinator (CO)', 'Shaper (SH)', 'Evaluator (ME)', 'Teamworker (TW)', 'Implementer (IM)', 'Finisher (CF)', 'Specialist (SP)']
         request.session['current_row'] = 0
         request.session['current_col'] = 0
 

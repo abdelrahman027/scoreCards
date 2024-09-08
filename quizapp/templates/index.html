@@ -40,7 +40,18 @@
                 } else if (data.result) {
                     console.log(data.result);
                     localStorage.setItem("result", JSON.stringify(data.result));
-                    alert("Final Scores: " + JSON.stringify(data.result));
+                    alert("Final Scores: \n" +
+                    'Plant (PL) : ' + JSON.stringify(data.result['Plant (PL)']) +"\n"+
+                    'Shaper (SH) : ' + JSON.stringify(data.result['Shaper (SH)']) +"\n"+
+                    'Coordinator (CO) : ' + JSON.stringify(data.result['Coordinator (CO)']) +"\n"+
+                    'Evaluator (ME) : ' + JSON.stringify(data.result['Evaluator (ME)']) +"\n"+
+                    'Investigator (RI) : ' + JSON.stringify(data.result['Investigator (RI)']) +"\n"+
+                    'Implementer (IM) : ' + JSON.stringify(data.result['Implementer (IM)']) +"\n"+
+                    'Finisher (CF) : ' + JSON.stringify(data.result['Finisher (CF)']) +"\n"+
+                    'Teamworker (TW) : ' + JSON.stringify(data.result['Teamworker (TW)']) +"\n"+
+                    'Plant (PL) : ' + JSON.stringify(data.result['Specialist (SP)']) +"\n"+
+                    "Your primary Roles are the most role that you have points in ! \n the rest are your secondary"
+                    );
                 } else {
                     document.getElementById('question').textContent = data.question;
                     //document.getElementById('q_head').textContent =`Answer part ${data}`
